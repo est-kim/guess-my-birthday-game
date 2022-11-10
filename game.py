@@ -1,3 +1,4 @@
+#First Guess My Birthday Exercise
 # from random import randint
 
 # name = input("Hi! What is your name? ")
@@ -15,6 +16,8 @@
 #     else:
 #         print("Drat! Lemme try again!")
 
+
+#Stretch Goal Attempt
 import random
 from random import randint
 # import calendar
