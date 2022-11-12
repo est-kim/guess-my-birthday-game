@@ -20,11 +20,9 @@
 #Stretch Goal Attempt
 import random
 from random import randint
-# import calendar
-# low_month = calendar.month_name[1]
-# high_month = calendar.month_name[12]
+import calendar
 
-guesses = []
+guess_count = 1
 
 months = [
     "January",
@@ -44,8 +42,10 @@ months = [
 low_day = 1
 high_day = 31
 
-low_month = months[0]
-high_month = months[11]
+# low_month = months[0]
+# high_month = months[11]
+low_month = calendar.month_name[1]
+high_month = calendar.month_name[12]
 
 low_year = 1924
 high_year = 2004
@@ -59,15 +59,18 @@ for guess_number in range(5):
     guess_year = randint(low_year, high_year)
 
     print("Guess", str(guess_number + 1), ":", name, "were you born on", guess_month, guess_day, guess_year, "?")
-    yes_later_earlier = input("yes, later, or earlier? ")
-    if yes_later_earlier == "yes":
+    yes_later_earlier = input("yes, later, or earlier? ").lower()
+    if guess_count == 4:
+        print("I have other things to do. Goodbye.")
+    elif yes_later_earlier == "yes":
         print("I knew it!")
+        print("It took me", guess_count, "guesses!")
         break
     elif yes_later_earlier == "later":
         print("Drat! Lemme try again!")
-        low_year = guess_year - 1
-        guesses.append([guess_year])
+        low_year = guess_year + 1
+        guess_count = guess_count + 1
     elif yes_later_earlier == "earlier":
         print("Drat! Lemme try again!")
-        low_year = guess_year + 1
-        guesses.append([guess_year])
+        high_year = guess_year - 1
+        guess_count = guess_count + 1
